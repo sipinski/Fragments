@@ -10,7 +10,6 @@ namespace Fragments
         private SerialPort serialPort;
         public SerialController(string port, int baudRate, Parity parity, StopBits stopBits, int dataBits, Handshake handShake, bool rtsEnable, SerialDataReceivedEventHandler DataReceivedHandler)
         {
-
             serialPort = new SerialPort(port);
             serialPort.BaudRate = baudRate;
             serialPort.Parity = parity;
@@ -18,13 +17,10 @@ namespace Fragments
             serialPort.DataBits = dataBits;
             serialPort.Handshake = handShake;
             serialPort.RtsEnable = rtsEnable;
-
             serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
             serialPort.Open();
         }
-
-
-
+        
         public void Dispose()
         {
             serialPort.Close();

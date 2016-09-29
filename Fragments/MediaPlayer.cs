@@ -127,14 +127,12 @@ namespace Fragments
             if (Char.IsLetterOrDigit(c) && c != '0') 
                 nextAction = c.ToString();
         }
-
         public void Dispose()
         {
             behaviourLoop.Abort();
+            serialController.Dispose();
             if (player != null) player.Dispose();
             instance.Dispose();
         }
-
     }
-
 }
