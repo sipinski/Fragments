@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyLibVLC.Properties {
+namespace Fragments.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
