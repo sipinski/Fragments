@@ -29,22 +29,19 @@ namespace Fragments
             actions = new Hashtable(); // action or serial character, and the name of the directory containing videos
             actions.Add("0", "Idle");   // default 
             actions.Add("1", "Active");
-
-            //serialPort = "COM1";
+        
             serialController = new SerialController("COM3", 9600, Parity.None, StopBits.One, 8, Handshake.None, false, runNextActionFromSerial);
 
-            //Initialization
+            // Initialization
             this.window = window;
             instance = new VlcInstance(args);
-            player = null;
-
+            
             SerialPort mySerialPort = new SerialPort("COM1");
 
             // Main Program Behaviour Loop 
             behaviourLoop = new Thread(() =>
             {
                 Thread.CurrentThread.IsBackground = true;
-
                // start default action
                doAction("0");
 
@@ -65,8 +62,6 @@ namespace Fragments
                 }
             });
             behaviourLoop.Start();
-
-            // Serial port action scanner
         }
 
         public void doAction(string action)
