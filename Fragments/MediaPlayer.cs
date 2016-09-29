@@ -125,7 +125,8 @@ namespace Fragments
         public void Dispose()
         {
             behaviourLoop.Abort();
-            serialController.Dispose();
+            if (serialController != null)
+                serialController.Dispose();
             if (player != null) player.Dispose();
             instance.Dispose();
         }

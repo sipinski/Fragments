@@ -18,12 +18,22 @@ namespace Fragments
             serialPort.Handshake = handShake;
             serialPort.RtsEnable = rtsEnable;
             serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+            try { 
             serialPort.Open();
+            } catch (Exception E)
+            {
+                Console.WriteLine(E.ToString());
+            }
         }
         
         public void Dispose()
         {
-            serialPort.Close();
+            try {
+                serialPort.Close();
+            }
+            catch (Exception E)
+            {
+            }
         }
     }
 }
