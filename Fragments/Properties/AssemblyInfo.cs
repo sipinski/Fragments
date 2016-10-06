@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MyLibVLC")]
+[assembly: AssemblyTitle("Fragments")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("MyLibVLC")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2009")]
+[assembly: AssemblyCompany("Reva Stone")]
+[assembly: AssemblyProduct("Fragments")]
+[assembly: AssemblyCopyright("Reva Stone")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
