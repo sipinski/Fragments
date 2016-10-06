@@ -3,7 +3,9 @@ using System.Collections;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Ports;
+using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace Fragments
@@ -35,19 +37,15 @@ namespace Fragments
             // Initialization
             this.window = window;
             instance = new VlcInstance(args);
-            
-            SerialPort mySerialPort = new SerialPort("COM1");
 
             // Main Program Behaviour Loop 
             behaviourLoop = new Thread(() =>
             {
                 Thread.CurrentThread.IsBackground = true;
-               // start default action
-               doAction("0");
 
                 while (true)
                 {
-                    if (!player.IsPlaying())
+                    if (player == null || !player.IsPlaying())
                     {
                         doAction("0");
                     }
@@ -60,6 +58,7 @@ namespace Fragments
                         }
                     }
                 }
+
             });
             behaviourLoop.Start();
         }
@@ -71,7 +70,8 @@ namespace Fragments
                 default:
                     // Play random video from the associated actions folder
                     try {
-                        string[] files = Directory.GetFiles(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\" + actions[action] + @"\", "*.mpg");
+                        string[] files = Directory.GetFiles(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\" + actions[action] + @"\", "*.*", 
+                            SearchOption.AllDirectories).Where(file => Regex.IsMatch(file, @"^.+\.(avi|mp3|mpg|mp4)$")).ToArray();
                         play(files[rnd.Next(files.Length)]);
                     }catch (Exception E)
                     {
